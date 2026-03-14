@@ -3,3 +3,4 @@ plotly
 numpy
 pandas
 fpdf2
+kaleido
