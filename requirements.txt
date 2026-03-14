@@ -1,6 +1,6 @@
 streamlit
 plotly
 numpy
-pandas
+matplotlib
 fpdf2
-kaleido
+
