@@ -24,7 +24,7 @@ LGRAY   = "#f3f4f6"
 # HEADER
 # ════════════════════════════════════════════════════════════════════
 st.title("D2C P&L Dash")
-st.caption("V3 — Now with ROAS, CM2, and What-if Simulator. Built by Amaan Khan.")
+st.caption("Just plug in your numbers and see if your D2C business is profitable or not. — built by Amaan")
 st.divider()
 
 # ════════════════════════════════════════════════════════════════════
@@ -86,7 +86,7 @@ st.divider()
 # SECTION 1 — Core Inputs  (symmetric 3-col layout)
 # ════════════════════════════════════════════════════════════════════
 st.subheader("The Numbers")
-st.caption("Fill these in and everything below will update on its own.")
+st.caption("Fill in your brand's raw numbers.")
 
 col1, col2, col3 = st.columns(3)
 
@@ -122,7 +122,7 @@ st.divider()
 # SECTION 2 — Cancellations & RTO
 # ════════════════════════════════════════════════════════════════════
 st.subheader("Cancellations & RTO")
-st.caption("RTO — the silent killer of D2C margins. Track it carefully.")
+st.caption("Enter the Cancellations & RTO as exact numbers OR as percentages. Track it carefully.")
 
 use_pct = st.toggle("Use percentages (slider) instead of exact numbers", value=True)
 
@@ -209,7 +209,7 @@ with tl:
         ],
     })
 with tr:
-    st.markdown("**Where does each rupee go?**")
+    st.markdown("**Breaking down the Total cost per delivered order**")
     if total_cost > 0:
         st.write(f"📣 Marketing:   **{mkt_per_del/total_cost*100:.1f}%** of total cost")
         st.write(f"🚚 Shipping:    **{ship_per_del/total_cost*100:.1f}%** of total cost")
@@ -377,7 +377,7 @@ st.write("")
 
 # RTO Sensitivity
 st.markdown("**What happens to profit if RTO rate changes?**")
-st.caption("Slide your eyes to the current RTO marker and see how close you are to the red zone.")
+st.caption("The Indian markets problem!")
 st.plotly_chart(build_sensitivity(), use_container_width=True)
 
 st.divider()
@@ -393,7 +393,7 @@ if profit < 0:
                            f"Spending ₹{abs(profit):.0f} more than earned per delivery. "
                            f"Priority: reduce RTO or cut ad spend."))
 elif profit_pct < 10:
-    verdicts.append(("🟡", f"{display_name} is profitable but margins are razor thin at {profit_pct:.1f}%. "
+    verdicts.append(("🟡", f"{display_name} is profitable but margins are very thin at {profit_pct:.1f}%. "
                            f"One bad month of high RTO could flip this to a loss."))
 else:
     verdicts.append(("🟢", f"{display_name} looks healthy — earning ₹{profit:.0f} per delivered order "
@@ -427,7 +427,7 @@ st.divider()
 # SECTION 8 — What-if Simulator
 # ════════════════════════════════════════════════════════════════════
 st.subheader("What-if Simulator")
-st.caption("Tweak one variable and instantly see how it changes your profit. Great for merchant conversations.")
+st.caption("Tweak variables and instantly see how it changes our profit. Great for merchant conversations.")
 
 with st.expander("Open the What-if Simulator", expanded=False):
     wi1, wi2 = st.columns(2)
@@ -536,7 +536,7 @@ st.divider()
 # SECTION 9 — PDF  (matplotlib for chart images — no Chrome needed)
 # ════════════════════════════════════════════════════════════════════
 st.subheader("Download Report")
-st.caption("Includes full P&L, summary numbers, 2 charts, and the verdict. No Chrome needed.")
+st.caption("Includes full P&L, summary numbers, pie-chart, waterfall graph, and the suggestions.")
 
 def mpl_donut(path):
     """Donut chart via matplotlib — works on Streamlit Cloud."""
@@ -732,4 +732,4 @@ if st.button("Generate & Download PDF"):
                 st.error(f"PDF generation failed: {e}")
 
 st.divider()
-st.caption("D2C P&L Dash V3  ·  built by Amaan Khan  ·  powered by the ShopDeck P&L framework")
+st.caption("D2C P&L Dash · built by Amaan Khan")
